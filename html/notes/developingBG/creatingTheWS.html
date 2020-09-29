@@ -20,9 +20,49 @@
 
 	<main id="mainContent" tabindex="-1">
 		<h1>Creating and Configuring the Initial Webserver for blindgumption.com</h1>
-		
+		<p>
+			We're going to go through several tutorials from DigitalOcean to get the server configured.
+I chose DigitalOcean due to its somewhat accessible user interface.  I say somewhat becuase you have to poke around to find information.  It could be a much better user experience, I have been able to do everything I've needed/wanted to do though and that's much better than some other cloud services (yes, I'm referring to AWS). 
+		</p>
+		<p>
+			I'll avoid going into detail on using the DigitalOcean console.  It appears to be evolving as I'm using it.  I don't recall the changes but do recall thinking they were improvements and I know they're working on accessibility.  Hopefully a future reader here will find DigitalOcean to be a very smooth interface.
+		</p>
+		<p>
+			I will however give a few pointers on the current (Sept 2020) DigitalOcean UI.  Once I log in to my account, I press 'b' to find either the manage or create button, depending on what I need to do. Pressing buttons in DigitalOcean often results in silence.  That generally implies something was opened in a frame somwhere and you'll need to find it.
+			For activities like createing or managing droplets or domains, I find pressing '1' to go to the first level header, or 't' to go to the next table will get me where I need to be.    
+		</p>
+
 		<h2>Creating the Initial Server</h2>
 		<p>
+			In DigitalOcean, the virtual machines are called droplets.  To create a droplet, that's right, find the create button.  
+		</p>
+		<p>
+			After pressing create, the link to create a new droplet is (at least as of Sept, 2020) immediately below the button.  Click the link to create a new droplet then find the first header and follow the directions.
+		</p>
+		<p> 
+	 What type of droplet should you create?  If your new to most of this, I suggest Ubuntu with the lowest resources (CPU, storage, RAM).  It's only $5/month and will be plenty to get going.  Ubuntu is very common so you'll probably find a lot of answers online if/when you run into problems.  blindgumption.com is currently running on Ubuntu 20.04LTS.
+		</p>
+		<p>
+			You'll be asked several questions to create the droplet.  If this is your first time, I suggest don't worry about a backup or extra storage or IPv6 .  I chose the SF region since I'm on the West Coast for where to create the droplet.  You might want to choose a region near you.  It only matters in the possible delay between you and the datacenter.
+		</p>
+		<p>
+			Unless you already know about SSH keys, create a root user password which you'll use in subsequent steps.  There's a link further down explaining how to create SSH keys and upload them to your host.
+		</p>
+		<p>
+			What should my hostname be?  If you have already 
+			<a href="/notes/developingBG/creatingTheDomain.html">created a domain</a>a> (we have a bit of a chicken and egg problem), you might want to give your new droplet a name like, "home.mydomain.com" during this creation process.  Don't worry if you don't have a name yet, you can set it later (there's a link below).  You will need to know the IP address though to log in to the host in the next steps.
+		</p>
+		<h3>I have to use a VPC?</h3>
+		<p>
+			A VPC is a 
+			<a href="https://www.digitalocean.com/docs/networking/vpc/">Virtual Private Cloud.</a>
+			A VPC is a way to organize resources wihtin a cloud environment for isolation and better security.  There are many benefits to a VPC which you can read about on DigitalOcean.
+		</p>
+		<p></p> 
+			As I'm writing this (Sept. 2020) droplets do not have to be created within a VPC.  That is changing in October.  The apps.blindgumption.com, the name of the webserver for blindgumption.com is a single droplet, not in a VPC.  If BlindGumption takes off in any large sense, I'll convert to a VPC.
+		</p>
+		<p>
+			If you're reading this and I have not taken the time to update the article with how to use a VPC, hopefully there are some clear defaults that let you have a droplet in a VPC with a publically accessible IP address.  If you see the term gateway, that's generally a host on the edge of the VPC, between the private and public networks.  Hopefully the default is to create your new droplet as a gateway.  Then the VPC will likely be transparent to you. 
 		</p>
 
 	</main>
