@@ -60,6 +60,12 @@
 		The first step in DigitalOcean was to create a droplet.  We'll cover this in the next article, just understand I created the droplet to get an IP address toconfigure 'A' records for the blindgumption.com domain in DigitalOcean.
 	</p>
 	<p>
+		<em>Note: </em>  As I was writing the article on 
+		<a href="/notes/developingBG/creatingTheWS.html">creating the webserver</a>, 
+		when I got to the point of assigning a hostname during the process to create the droplet, I realized we have a chicken and egg problem.
+		You really don't need an address to create the domain, you only need it when adding an 'A' record.  You can create the domain as described here than add the 'A' record later. 
+	</p>
+	<p>
 	 This section is where understanding chapter two of "Learning Core DNS" will be helpful.  Mostly you need to know an 'A" record maps a domain name to an actual IP address.  And a 'CNAME' record is used to create an alias for a domain name.
 	</p>
 	<p>

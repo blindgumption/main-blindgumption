@@ -65,6 +65,23 @@ I chose DigitalOcean due to its somewhat accessible user interface.  I say somew
 			If you're reading this and I have not taken the time to update the article with how to use a VPC, hopefully there are some clear defaults that let you have a droplet in a VPC with a publically accessible IP address.  If you see the term gateway, that's generally a host on the edge of the VPC, between the private and public networks.  Hopefully the default is to create your new droplet as a gateway.  Then the VPC will likely be transparent to you. 
 		</p>
 
+		<h2>Initial Server Configuration</h2>
+		<p>
+		 See this <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04">
+			DigitalOcean tutorial for adding users, setting up SSH keys, and initializing a firewall.</a>
+		</p>
+		<p>
+			that tutorial is complete though you'll need to click through a link in the tutorial to get to the SSH tutorial.  Don't be intimidated by the idea of generating and using SSH keys.  They will make your life easier and it's just a matter of following the directions.  And if you're getting into tech, you'll really want to start understanding security.
+		</p>
+		<p>
+			Regarding UFW, the firewall used in the tutorial.  It's not going to break anything if you don't use a firewall, but it's a good practice and it's easy to configure.  I recommend doing those steps. 
+		</p>
+
+		<h2>Install and Configure Nginx, the Webserver</h2>
+		<p>
+			We have a server with a user with sudo privileges, time to install a webserver.  Nginx is a very popular option and, you guessed it, there's a good
+			<a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04">tutorial on DigitalOcean for installing Nginx on Ubuntu 20.04.</a> 
+		</p>
 	</main>
 	<footer>
 		 <em>Disclaimer: all thoughts, opinions, and attempts at humer on BlindGumption and associated sites are mine.  I do not speak for the blind community. </em>
