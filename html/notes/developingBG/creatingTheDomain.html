@@ -28,12 +28,15 @@
 	<p>
 		The more you know about the
 		<a href="https://en.wikipedia.org/wiki/Domain_Name_System">Domain Name System (DNS)</a> 
-		the easier it will be to follow this article.  
+		the easier it will be to follow this article.
 		However, fully following this article isn't very important unless you plan to get your own domain name and want to point it to a host in some cloud environment.
-		So I'm not going in to much detail.
+	 I'll not go into great depth partly because this step can be skipped, though I'd recommend not skipping it, but mostly because there is so much really good information elsewhere..
 	</p>
 	<p>
-		Another good resource for learning enough about DNS to follow this article is the book "Learning Core DNS" (find it here: 		<a href="https://www.bookshare.org/browse/book/2820572">"Learning Core DNS" on Bookshare. </a>.  I know DNS at a somewhat high level and was able to do what I needed to do after reading chapter two of that book.
+		In a very small nutshell, DNS is used to map a domain name, e.g., blindgumption.com, to an IP address.  IP addresses are used to create connections between computers and send data, e.g., requests for documents and responses with the requested document. 
+	</p>
+	<p>
+		Another good resource for learning enough about DNS to follow this article is the book "Learning Core DNS" (find it here (if you have a bookshare.org account): 		<a href="https://www.bookshare.org/browse/book/2820572">"Learning Core DNS" on Bookshare. </a>.  I know DNS at a somewhat high level and was able to do what I needed to do after reading chapter two of that book.
 		And if you ever want to stand up a much more complicated backend environment, Core DNS might be a good option for some routing and discovery functionality. 
 	</p>
 
@@ -42,41 +45,40 @@
 		Back again to <a href="https://en.wikipedia.org/wiki/Domain_name_registrar">Wikipedia to learn about Registrars.</a>
 		There's another good, a little shorter with a nice analogy, 
 		<a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/">article from Cloudflare regarding Registrars.</a>
-		Cloudflare is a comercial company and has a lot of articles on DNS, it can be a little painful to sift through the cruft to find the actual article though. 
+		Cloudflare is a comercial company and has a lot of good articles on DNS, it can be a little painful to sift through the cruft to find the actual article though. 
 	</p>
 	<p>
 		It's not critical to know great details about Domain Name Registrars, just know you'll need to use one to acquire your domain name.  
 		I've had an account at <a href="https://www.godaddy.com">GoDaddy</a> for years, so I used that.  
-		The GoDaddy website fails in many ways on accessibility, but the phone support is good.
+		The GoDaddy website fails in many ways on accessibility, but the phone support is usually good.
 	 I could search to determine the blindgumption.com domain name was available then called to purchase it .
 	 At the time of purchasing the domain name, I also had them configure NS DNS records to point to DigitalOcean's name servers. 
+	</p>
+	<p>
+		I only mention GoDaddy because that's what I used.  I suggest you fire up your favorite search engine and choose a Registrar that suits you.  Every time I've spoken to GoDaddy support I mention the site is not accessible.  I have not seen any changes over at least two years.  I really should move my domains if they're not taking accessiblity seriously. 
 	</p>
 	<p>
 		Now I have the domain name I want and DNS queries to the Registrar will tell the DNS resolver (the code probably running in your browser trying to find the IP address for a given domain name) to go to DigitalOcean.  I'm done with the Registrar.  It's time to configure my domain on DigitalOcean.
 	</p>
 
 	<h2>Configure the blindgumption.com domain in DigitalOcean</h2>
-	<p>
-		The first step in DigitalOcean was to create a droplet.  We'll cover this in the next article, just understand I created the droplet to get an IP address toconfigure 'A' records for the blindgumption.com domain in DigitalOcean.
-	</p>
-	<p>
-		<em>Note: </em>  As I was writing the article on 
-		<a href="/notes/developingBG/creatingTheWS.html">creating the webserver</a>, 
-		when I got to the point of assigning a hostname during the process to create the droplet, I realized we have a chicken and egg problem.
-		You really don't need an address to create the domain, you only need it when adding an 'A' record.  You can create the domain as described here than add the 'A' record later. 
-	</p>
-	<p>
-	 This section is where understanding chapter two of "Learning Core DNS" will be helpful.  Mostly you need to know an 'A" record maps a domain name to an actual IP address.  And a 'CNAME' record is used to create an alias for a domain name.
-	</p>
-	<p>
-		<em>Note</em>, for simplicity I'm sticking to IPv4 so will not discuss 'AAAA' records other than to say they're like 'A' records but for IPv6.  If you're doing anything serious you really should support IPv6 but for the sake of learning the basics of standing up a simple website, IPv4 is fine. 
-	</p>
 	<p> 
-		As of September, 2020, creating a new domain in DigitalOcean was a very easy process.  I found, and clicked the create button, clicked the DNS/Domains link, entered "blindgumption.com" in the edit box, pressed the button (I forgot the button label) and boom, I have the beginnings of a zone file for blindgumption.com.  Fortunately, you don't have to edit the zone file directly, it's presented as a table with each entry as a row.  pressing 't' takes you directly to the table and it' easy to navigate in the standard screen reader way. 
+		As of September, 2020, creating a new domain in DigitalOcean was a very easy process.  I found, and clicked the create button, clicked the DNS/Domains link, entered "blindgumption.com" in the edit box, pressed the button and boom, I have the beginnings of a zone file for blindgumption.com.  Fortunately, you don't have to edit the zone file directly, it's presented as a table with each entry as a row.  pressing 't' takes you directly to the table and it's easy to navigate in the standard screen reader way. 
 	 
 	</p>
 	<p>
-		Now I have the intial zone file, I need to add records to point blindgumption.com to a specific host.  I added an 'A' record to point blindgumption.com to the droplet I mentioned earlier.  I also created a 'CNAME' record, www.blindgumption.com to be an alias for blindgumption.com.  Creating these records was done by pressing the appropriate button for which type of record I wnated to create and filling in a few edit fields.  I never had to edit a zone file directly.  
+		Now I have the intial zone file, I need to add records to point blindgumption.com to a specific host.  This is where you will need to have already created the host to get the IP address(es.  If you haven't created the host yet, do that then come back here and finish the domain configuration.
+	</p>
+	
+	<p>
+		This section is where understanding chapter two of "Learning Core DNS" will be helpful.  Mostly you need to know an 'A" record maps a domain name to an actual IP address.  And a 'CNAME' record is used to create an alias for a domain name.
+	   </p>
+	   <p>
+		   <em>Note</em>, for simplicity I'm sticking to IPv4 so will not discuss 'AAAA' records other than to say they're like 'A' records but for IPv6.  If you're doing anything serious you really should support IPv6 but for the sake of learning the basics of standing up a simple website, IPv4 is fine. 
+	   </p>
+   
+	<p> 
+		I added an 'A' record to point blindgumption.com to the webserver host.  I also created a 'CNAME' record, www.blindgumption.com to be an alias for blindgumption.com.  Creating these records was done by pressing the appropriate button for which type of record I wnated to create and filling in a few edit fields.  I never had to edit a zone file directly.  
 	</p>
 
 	<h2>Conclusion</h2>

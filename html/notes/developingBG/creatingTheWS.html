@@ -28,7 +28,7 @@ I chose DigitalOcean due to its somewhat accessible user interface.  I say somew
 			I'll avoid going into detail on using the DigitalOcean console.  It appears to be evolving as I'm using it.  I don't recall the changes but do recall thinking they were improvements and I know they're working on accessibility.  Hopefully a future reader here will find DigitalOcean to be a very smooth interface.
 		</p>
 		<p>
-			I will however give a few pointers on the current (Sept 2020) DigitalOcean UI.  Once I log in to my account, I press 'b' to find either the manage or create button, depending on what I need to do. Pressing buttons in DigitalOcean often results in silence.  That generally implies something was opened in a frame somwhere and you'll need to find it.
+			I will however give a few pointers on the current (Sept 2020) DigitalOcean UI.  Once I log in to my account, I press 'b' to find either the manage or create button, depending on what I need to do. Pressing buttons in DigitalOcean often results in silence.  That generally implies something was opened somwhere and you'll need to find it.
 			For activities like createing or managing droplets or domains, I find pressing '1' to go to the first level header, or 't' to go to the next table will get me where I need to be.    
 		</p>
 
@@ -39,8 +39,10 @@ I chose DigitalOcean due to its somewhat accessible user interface.  I say somew
 		<p>
 			After pressing create, the link to create a new droplet is (at least as of Sept, 2020) immediately below the button.  Click the link to create a new droplet then find the first header and follow the directions.
 		</p>
+
+		<h3>What Type of Droplet Should I Create? </h3>
 		<p> 
-	 What type of droplet should you create?  If your new to most of this, I suggest Ubuntu with the lowest resources (CPU, storage, RAM).  It's only $5/month and will be plenty to get going.  Ubuntu is very common so you'll probably find a lot of answers online if/when you run into problems.  blindgumption.com is currently running on Ubuntu 20.04LTS.
+	 If your new to most of this, I suggest Ubuntu with the lowest resources (CPU, storage, RAM).  It's only $5/month and will be plenty to get going.  Ubuntu is very common so you'll probably find a lot of answers online if/when you run into problems.  blindgumption.com is currently running on Ubuntu 20.04LTS.
 		</p>
 		<p>
 			You'll be asked several questions to create the droplet.  If this is your first time, I suggest don't worry about a backup or extra storage or IPv6 .  I chose the SF region since I'm on the West Coast for where to create the droplet.  You might want to choose a region near you.  It only matters in the possible delay between you and the datacenter.
@@ -48,10 +50,22 @@ I chose DigitalOcean due to its somewhat accessible user interface.  I say somew
 		<p>
 			Unless you already know about SSH keys, create a root user password which you'll use in subsequent steps.  There's a link further down explaining how to create SSH keys and upload them to your host.
 		</p>
+
+		<h3>What Should My Hostname Be? </h3>
 		<p>
-			What should my hostname be?  If you have already 
-			<a href="/notes/developingBG/creatingTheDomain.html">created a domain</a>a> (we have a bit of a chicken and egg problem), you might want to give your new droplet a name like, "home.mydomain.com" during this creation process.  Don't worry if you don't have a name yet, you can set it later (there's a link below).  You will need to know the IP address though to log in to the host in the next steps.
+			If you have already 
+			<a href="/notes/developingBG/creatingTheDomain.html">created a domain</a>, you might want to give your new droplet a name like, "home.mydomain.com" (where, for example, mydomain.com is what you created earlier) during this creation process.
 		</p>
+		<p>  
+		Don't worry if you don't have a domain created yet, you can choose a name without a domain, e.g., "home" or "webserver".
+		DigitalOcean will use its own domain name which is likely a concatination of strings representing information like which datacenter the host is in and other info about the droplet. 
+	</p>
+	<p>
+		You can <a href="https://www.digitalocean.com/community/questions/how-do-i-change-hostname">change the droplet's hostname</a> later if you like. 
+	</p>
+	<p>
+		If you haven't created a domain and 'A' record for your droplet yet, you will need the IP address of the droplet to log in to it later.
+	</p>
 		<h3>I have to use a VPC?</h3>
 		<p>
 			A VPC is a 
